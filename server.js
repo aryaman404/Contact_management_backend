@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import { Contact } from "../API/ContactModel.js";
+import { Contact } from "./ContactModel.js";
 import bodyParser from "express";
 import cors from "cors";
 import dotenv from "dotenv";
