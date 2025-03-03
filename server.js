@@ -12,7 +12,6 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"], // Explicitly allow headers
     credentials: true,
   })
 );
@@ -76,7 +75,7 @@ app.delete("/home/:id", async (req, res) => {
   const id = req.params.id;
   try {
     let contact = await Contact.findById(id);
-    if (!contact) res.json({ message: "Contact does not exist" });
+    if (!contact) return res.json({ message: "Contact does not exist" });
 
     await contact.deleteOne();
     res.json({ message: "Contact has been deleted successfully!!!" });
@@ -84,5 +83,6 @@ app.delete("/home/:id", async (req, res) => {
     res.json({ error: error.message });
   }
 });
+const PORT = process.env.PORT || 2000;
 
-app.listen(2000, () => console.log("server is running on port 2000"));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
