@@ -10,11 +10,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "*",
+    origin: "https://quickcontact.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
 dotenv.config(); // Load .env file
 
 const connectDB = async () => {
